@@ -48,4 +48,14 @@ func main() {
 	if err := router.Run(":8080"); err != nil {
 		log.Fatalf("Failed to start server: %v", err)
 	}
+
+	taskRepo := repositories.NewTaskRepository(db)
+	taskHandler := handlers.NewTaskHandler(taskRepo)
+
+	// Protected task routes
+	protected.POST("/tasks", taskHandler.CreateTask)
+	protected.GET("/tasks", taskHandler.GetTasks)
+	protected.GET("/tasks/:id", taskHandler.GetTask)
+	protected.PATCH("/tasks/:id", taskHandler.UpdateTask)
+	protected.DELETE("/tasks/:id", taskHandler.DeleteTask)
 }
