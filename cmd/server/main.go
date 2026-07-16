@@ -2,10 +2,10 @@ package main
 
 import (
 	"log"
-	"task-queue/config"
-	"task-queue/handlers"
-	"task-queue/middleware"
-	"task-queue/repositories"
+	"github.com/JadhavSrushti1544/TaskForge/internal/config"
+	"github.com/JadhavSrushti1544/TaskForge/internal/handlers"
+	"github.com/JadhavSrushti1544/TaskForge/internal/middleware"
+	"github.com/JadhavSrushti1544/TaskForge/internal/repositories"
 
 	"github.com/gin-gonic/gin"
 )

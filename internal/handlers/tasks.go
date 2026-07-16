@@ -3,8 +3,8 @@ package handlers
 import (
     "net/http"
     "strconv"
-    "task-queue/models"
-    "task-queue/repositories"
+    "github.com/JadhavSrushti1544/TaskForge/internal/models"
+    "github.com/JadhavSrushti1544/TaskForge/internal/repositories"
     "github.com/gin-gonic/gin"
 )
 

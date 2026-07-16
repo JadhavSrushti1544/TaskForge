@@ -2,7 +2,7 @@ package middleware
 
 import (
     "strings"
-    "task-queue/config"
+    "github.com/JadhavSrushti1544/TaskForge/internal/config"
     "github.com/gin-gonic/gin"
 )
 

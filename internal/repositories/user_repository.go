@@ -2,7 +2,7 @@ package repositories
 
 import (
 	"database/sql"
-	"task-queue/models"
+	"github.com/JadhavSrushti1544/TaskForge/internal/models"
 )
 
 type UserRepository struct {

@@ -2,6 +2,7 @@ package config
 
 import (
 	"os"
+	"time"
 
 	"github.com/golang-jwt/jwt"
 )
@@ -16,16 +17,18 @@ func GenerateToken(userID int, email string) (string, error) {
 		"exp":time.Now().Add(24*time.Hour).Unix(),
 	})
 
-	// VerifyToken validates a JWT token
-	func VerifyToken(tokenString string) (int, error){
-		token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
-			return jwtSecret, nil
-		})
-		if err != nil || !token.Valid {
-			return 0, err
-		}
-		claims := token.Claims.(jwt.MapClaims)
-		userID := int(claims["user_id"].(float64))
-		return userID, nil
+	return token.SignedString(jwtSecret)
+}
+
+// VerifyToken validates a JWT token
+func VerifyToken(tokenString string) (int, error){
+	token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) {
+		return jwtSecret, nil
+	})
+	if err != nil || !token.Valid {
+		return 0, err
 	}
+	claims := token.Claims.(jwt.MapClaims)
+	userID := int(claims["user_id"].(float64))
+	return userID, nil
 }

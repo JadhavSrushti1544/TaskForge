@@ -2,10 +2,10 @@ package handlers
 
 import (
     "net/http"
-    "task-queue/config"
-    "task-queue/models"
-    "task-queue/repositories"
-    "task-queue/services"
+    "github.com/JadhavSrushti1544/TaskForge/internal/config"
+    "github.com/JadhavSrushti1544/TaskForge/internal/models"
+    "github.com/JadhavSrushti1544/TaskForge/internal/repositories"
+    "github.com/JadhavSrushti1544/TaskForge/internal/service"
     "github.com/gin-gonic/gin"
 )
 
@@ -32,7 +32,7 @@ func (h *AuthHandler) Register(c *gin.Context) {
     }
     
     // Hash password
-    hash, err := services.HashPassword(req.Password)
+    hash, err := service.HashPassword(req.Password)
     if err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to process password"})
         return
@@ -63,7 +63,7 @@ func (h *AuthHandler) Login(c *gin.Context) {
     }
     
     // Verify password
-    if !services.VerifyPassword(user.PasswordHash, req.Password) {
+    if !service.VerifyPassword(user.PasswordHash, req.Password) {
         c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
         return
     }
