@@ -19,7 +19,7 @@ func NewAuthHandler(userRepo *repositories.UserRepository) *AuthHandler {
     return &AuthHandler{userRepo: userRepo}
 }
 
-// Register function
+// Register function to create new user
 func (h *AuthHandler) Register(c *gin.Context) {
     var req models.RegisterRequest
     if err := c.ShouldBindJSON(&req); err != nil {
