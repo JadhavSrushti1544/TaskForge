@@ -49,6 +49,7 @@ func (h *AuthHandler) Register(c *gin.Context) {
     c.JSON(http.StatusCreated, user)
 }
 
+// Login function
 func (h *AuthHandler) Login(c *gin.Context) {
     var req models.LoginRequest
     if err := c.ShouldBindJSON(&req); err != nil {
