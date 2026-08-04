@@ -14,6 +14,7 @@ type AuthHandler struct {
     userRepo *repositories.UserRepository
 }
 
+// Authentication Handler function to create new instance of AuthHandler
 func NewAuthHandler(userRepo *repositories.UserRepository) *AuthHandler {
     return &AuthHandler{userRepo: userRepo}
 }
