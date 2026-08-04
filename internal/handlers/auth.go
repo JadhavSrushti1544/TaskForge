@@ -59,7 +59,7 @@ func (h *AuthHandler) Login(c *gin.Context) {
         return
     }
     
-    // Find user
+    // Find user by email
     user, err := h.userRepo.GetUserByEmail(req.Email)
     if err != nil || user == nil {
         c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
