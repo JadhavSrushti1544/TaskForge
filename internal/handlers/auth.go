@@ -72,7 +72,7 @@ func (h *AuthHandler) Login(c *gin.Context) {
         return
     }
     
-    // Generate token 
+    // Generate JWT token
     token, err := config.GenerateToken(user.ID, user.Email)
     if err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to generate token"})
