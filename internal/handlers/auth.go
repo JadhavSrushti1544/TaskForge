@@ -66,7 +66,7 @@ func (h *AuthHandler) Login(c *gin.Context) {
         return
     }
     
-    // Verify password 
+    // Verify password using bcrypt
     if !service.VerifyPassword(user.PasswordHash, req.Password) {
         c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
         return
