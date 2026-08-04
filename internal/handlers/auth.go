@@ -17,6 +17,7 @@ func NewAuthHandler(userRepo *repositories.UserRepository) *AuthHandler {
     return &AuthHandler{userRepo: userRepo}
 }
 
+// Register function
 func (h *AuthHandler) Register(c *gin.Context) {
     var req models.RegisterRequest
     if err := c.ShouldBindJSON(&req); err != nil {
@@ -62,13 +63,13 @@ func (h *AuthHandler) Login(c *gin.Context) {
         return
     }
     
-    // Verify password
+    // Verify password 
     if !service.VerifyPassword(user.PasswordHash, req.Password) {
         c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
         return
     }
     
-    // Generate token
+    // Generate token 
     token, err := config.GenerateToken(user.ID, user.Email)
     if err != nil {
         c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to generate token"})
