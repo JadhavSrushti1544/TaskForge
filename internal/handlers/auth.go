@@ -9,6 +9,7 @@ import (
     "github.com/gin-gonic/gin"
 )
 
+// Authentication Handler struct
 type AuthHandler struct {
     userRepo *repositories.UserRepository
 }
