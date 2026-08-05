@@ -6,6 +6,7 @@ import (
     "github.com/gin-gonic/gin"
 )
 
+// AuthRequired middleware function to authenticate users
 func AuthRequired() gin.HandlerFunc {
     return func(c *gin.Context) {
         authHeader := c.GetHeader("Authorization")
