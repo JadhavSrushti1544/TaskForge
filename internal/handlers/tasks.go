@@ -17,7 +17,7 @@ func NewTaskHandler(taskRepo *repositories.TaskRepository) *TaskHandler {
     return &TaskHandler{taskRepo: taskRepo}
 }
 
-
+// CreateTask function to create new task
 func (h *TaskHandler) CreateTask(c *gin.Context) {
     userID := c.GetInt("user_id")
     
