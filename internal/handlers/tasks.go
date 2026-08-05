@@ -12,11 +12,12 @@ type TaskHandler struct {
     taskRepo *repositories.TaskRepository
 }
 
+// NewTaskHandler function to create new instance of TaskHandler
 func NewTaskHandler(taskRepo *repositories.TaskRepository) *TaskHandler {
     return &TaskHandler{taskRepo: taskRepo}
 }
 
-// CreateTask POST /tasks
+
 func (h *TaskHandler) CreateTask(c *gin.Context) {
     userID := c.GetInt("user_id")
     
